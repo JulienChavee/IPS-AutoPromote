@@ -1,3 +1,7 @@
+1.0.7 - 02/12/2017
+
+- Les membres du groupe du conseil sont retirés de leur groupe s'ils ne font plus partie des clubs choisis
+
 1.0.6 - 04/11/2017
 
 - Possibilité de paramètrer la configuration depuis l'interface d'administration

@@ -60,14 +60,14 @@ class _alliance_promote extends \IPS\Task
 			$members[]=$members_to_add->current();
 		}
 
-		$members_to_delete = \IPS\Db::i()->select( 'member_id', 'core_members', array( array( 'member_group_id=? OR find_in_set(?,mgroup_others) <> 0', $group_alliance, $group_alliance ) ) );
+		$members_to_delete = \IPS\Db::i()->select( 'member_id', 'core_members', array( array( 'member_group_id=? OR find_in_set(?,mgroup_others) <> 0 or member_group_id=? OR find_in_set(?,mgroup_others) <> 0', $group_alliance, $group_alliance, $group_conseil_alliance, $group_conseil_alliance ) ) );
 
 		for( $i = 0; $i < $members_to_delete->count(); $i++ )
 		{
 			$members_to_delete->next();
 			$member = \IPS\Member::load( $members_to_delete->current() );
 
-			if( !is_null( $member ) && !$member->isAdmin() && !in_array( $group_conseil_alliance, $member->get_groups() ) )
+			if( !is_null( $member ) && !$member->isAdmin() )
 			{
 				$delete = true;
 
